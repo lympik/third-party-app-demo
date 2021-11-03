@@ -1,0 +1,22 @@
+{
+  "name": "third-party-app-demo",
+  "version": "1.0.0",
+  "description": "Lympik authentication server is compliant with OpenID Connect Dynamic Client Registration specification. To get started please register your application like described here: https://auth0.com/docs/configure/applications/dynamic-client-registration#use-dynamic-client-registration. Use the generated `client_id` in this application. Your `redirect_uri` can also use localhost for testing purpose.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://lympik@github.com/lympik/third-party-app-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lympik/third-party-app-demo/issues"
+  },
+  "homepage": "https://github.com/lympik/third-party-app-demo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Third party app demo</title>
+    <style>
+        body {
+            font-family: "Roboto", "Helvetica", sans-serif;
+            margin: 0;
+            background: #fafafa;
+        }
+        .content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .button {
+            border-radius: 3px;
+            border: 1px solid #1288C9;
+            padding: 4px 16px;
+            color: #1288C9;
+            cursor: pointer;
+        }
+        .code {
+            display: none;
+            padding: 20px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 3px;
+            line-break: anywhere;
+        }
+    </style>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <h1>Third party app demo</h1>
+        <a id="login" class="button" onclick="login()">Sign In</a>
+        <p>Your access token:</p>
+        <p id="token" class="code"></p>
+    </div>
+    <script type="text/javascript">
+        var webAuth = new auth0.WebAuth({
+            domain:         'auth.lympik.com',
+            clientID:       'YOUR_CLIENT_ID',
+            audience:       'https://api.lympik.com',
+            responseType:   'token',
+            redirectUri:    'http://localhost:4200'
+        });
+
+        webAuth.parseHash({ hash: window.location.hash }, function(err, authResult) {
+            if (err) {
+                return console.log(err);
+            }
+            document.getElementById("login").style.display = "none";
+            document.getElementById("token").style.display = "block";
+            document.getElementById("token").textContent = authResult.accessToken;
+        });
+
+        function login() {
+            webAuth.authorize();
+        }
+    </script>
+</body>
+</html>
